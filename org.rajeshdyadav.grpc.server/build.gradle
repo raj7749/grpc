@@ -1,0 +1,12 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    api project(':org.rajeshdyadav.grpc.stubs')
+
+    implementation 'io.grpc:grpc-protobuf:1.57.2'
+    implementation 'io.grpc:grpc-stub:1.57.2'
+
+    runtimeOnly 'io.grpc:grpc-netty-shaded:1.57.2'
+}
