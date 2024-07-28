@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package org.rajeshdyadav.grpc.stubs.employee;
+
+service EmployeeService {
+  rpc EmployeeAdd(EmployeeAddRequest) returns (EmployeeAddResponse);
+  rpc EmployeeSearch(EmployeeSearchRequest) returns (EmployeeSearchResponse);
+}
+
+message EmployeeSearchRequest {
+  optional int32 emp_id = 1;
+  optional string emp_name = 2;
+}
+
+message EmployeeSearchResponse {
+  repeated EmployeeData empData = 1;
+  EmployeeSearchRequest requestData = 2;
+}
+
+message EmployeeAddRequest {
+  EmployeeData empData = 1;
+}
+
+message EmployeeAddResponse {
+  EmployeeData empData = 1;
+  Status status = 2;
+}
+
+message Status {
+  string msg_id = 1;
+  string msg_desc = 2;
+}
+
+message EmployeeData {
+  int32 emp_id = 1;
+  string emp_name = 2;
+  string email = 3;
+  string phone_number = 4;
+}
+

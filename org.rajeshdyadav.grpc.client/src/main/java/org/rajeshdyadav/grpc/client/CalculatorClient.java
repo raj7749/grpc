@@ -1,7 +1,7 @@
 package org.rajeshdyadav.grpc.client;
 
-import org.rajeshdyadav.gprc.calculator.CalculatorProto;
-import org.rajeshdyadav.gprc.calculator.CalculatorServiceGrpc;
+import org.rajeshdyadav.grpc.stubs.calculator.CalculatorProto;
+import org.rajeshdyadav.grpc.stubs.calculator.CalculatorServiceGrpc;
 
 public class CalculatorClient {
     private final CalculatorServiceGrpc.CalculatorServiceBlockingStub blockingStub;

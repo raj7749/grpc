@@ -1,8 +1,8 @@
 package org.rajeshdyadav.grpc.server;
 
 import io.grpc.stub.StreamObserver;
-import org.rajeshdyadav.gprc.helloworld.HelloWorldProto;
-import org.rajeshdyadav.gprc.helloworld.HelloWorldServiceGrpc;
+import org.rajeshdyadav.grpc.stubs.helloworld.HelloWorldProto;
+import org.rajeshdyadav.grpc.stubs.helloworld.HelloWorldServiceGrpc;
 
 public class HelloWorldServiceImpl extends HelloWorldServiceGrpc.HelloWorldServiceImplBase {
 

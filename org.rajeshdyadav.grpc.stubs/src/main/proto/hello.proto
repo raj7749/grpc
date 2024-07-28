@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option java_package = "org.rajeshdyadav.gprc.helloworld";
+option java_package = "org.rajeshdyadav.grpc.stubs.helloworld";
 option java_outer_classname = "HelloWorldProto";
 
 service HelloWorldService {

@@ -1,7 +1,7 @@
 package org.rajeshdyadav.grpc.client;
 
-import org.rajeshdyadav.gprc.helloworld.HelloWorldProto;
-import org.rajeshdyadav.gprc.helloworld.HelloWorldServiceGrpc;
+import org.rajeshdyadav.grpc.stubs.helloworld.HelloWorldProto;
+import org.rajeshdyadav.grpc.stubs.helloworld.HelloWorldServiceGrpc;
 
 import java.util.Arrays;
 

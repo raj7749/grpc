@@ -14,6 +14,7 @@ public class MyGrpcServer {
         server = ServerBuilder.forPort(port)
                 .addService(new HelloWorldServiceImpl())
                 .addService(new CalculatorServiceImpl())
+                .addService(new EmployeeServiceImpl())
                 .build()
                 .start();
         System.out.println("Server started, listening on " + port);

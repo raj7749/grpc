@@ -1,8 +1,8 @@
 package org.rajeshdyadav.grpc.server;
 
 import io.grpc.stub.StreamObserver;
-import org.rajeshdyadav.gprc.calculator.CalculatorProto;
-import org.rajeshdyadav.gprc.calculator.CalculatorServiceGrpc;
+import org.rajeshdyadav.grpc.stubs.calculator.CalculatorProto;
+import org.rajeshdyadav.grpc.stubs.calculator.CalculatorServiceGrpc;
 
 public class CalculatorServiceImpl extends CalculatorServiceGrpc.CalculatorServiceImplBase {
     @Override
