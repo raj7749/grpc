@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package org.rajeshdyadav.grpc.stubs.employee;
 
+option java_multiple_files = true;
+
 service EmployeeService {
   rpc EmployeeAdd(EmployeeAddRequest) returns (EmployeeAddResponse);
   rpc EmployeeSearch(EmployeeSearchRequest) returns (EmployeeSearchResponse);

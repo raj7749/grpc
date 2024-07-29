@@ -1,8 +1,13 @@
 package org.rajeshdyadav.grpc.server;
 
-import org.rajeshdyadav.grpc.stubs.employee.Employee;
+import org.rajeshdyadav.grpc.stubs.employee.EmployeeAddRequest;
+import org.rajeshdyadav.grpc.stubs.employee.EmployeeAddResponse;
+import org.rajeshdyadav.grpc.stubs.employee.EmployeeData;
+import org.rajeshdyadav.grpc.stubs.employee.EmployeeSearchRequest;
+import org.rajeshdyadav.grpc.stubs.employee.EmployeeSearchResponse;
 import org.rajeshdyadav.grpc.stubs.employee.EmployeeServiceGrpc;
 import io.grpc.stub.StreamObserver;
+import org.rajeshdyadav.grpc.stubs.employee.Status;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -11,16 +16,16 @@ import java.util.stream.Collectors;
 
 public class EmployeeServiceImpl extends EmployeeServiceGrpc.EmployeeServiceImplBase {
 
-    private final List<Employee.EmployeeData> employees = new CopyOnWriteArrayList<>();
+    private final List<EmployeeData> employees = new CopyOnWriteArrayList<>();
     private final AtomicInteger idCounter = new AtomicInteger();
 
     @Override
-    public void employeeAdd(Employee.EmployeeAddRequest request, StreamObserver<Employee.EmployeeAddResponse> responseObserver) {
+    public void employeeAdd(EmployeeAddRequest request, StreamObserver<EmployeeAddResponse> responseObserver) {
         // Generate a new unique emp_id
         int newEmpId = idCounter.incrementAndGet();
 
         // Create a new employee with the generated emp_id
-        Employee.EmployeeData newEmployee = Employee.EmployeeData.newBuilder()
+        EmployeeData newEmployee = EmployeeData.newBuilder()
                 .setEmpId(newEmpId)
                 .setEmpName(request.getEmpData().getEmpName())
                 .setEmail(request.getEmpData().getEmail())
@@ -29,12 +34,12 @@ public class EmployeeServiceImpl extends EmployeeServiceGrpc.EmployeeServiceImpl
 
         employees.add(newEmployee);
 
-        Employee.Status status = Employee.Status.newBuilder()
+        Status status = Status.newBuilder()
                 .setMsgId("200")
                 .setMsgDesc("Employee added successfully")
                 .build();
 
-        Employee.EmployeeAddResponse response = Employee.EmployeeAddResponse.newBuilder()
+        EmployeeAddResponse response = EmployeeAddResponse.newBuilder()
                 .setEmpData(newEmployee)
                 .setStatus(status)
                 .build();
@@ -44,8 +49,8 @@ public class EmployeeServiceImpl extends EmployeeServiceGrpc.EmployeeServiceImpl
     }
 
     @Override
-    public void employeeSearch(Employee.EmployeeSearchRequest request, StreamObserver<Employee.EmployeeSearchResponse> responseObserver) {
-        List<Employee.EmployeeData> matchedEmployees;
+    public void employeeSearch(EmployeeSearchRequest request, StreamObserver<EmployeeSearchResponse> responseObserver) {
+        List<EmployeeData> matchedEmployees;
 
         // If neither emp_id nor emp_name is set, return all employees
         if (!request.hasEmpId() && !request.hasEmpName()) {
@@ -57,7 +62,7 @@ public class EmployeeServiceImpl extends EmployeeServiceGrpc.EmployeeServiceImpl
                     .collect(Collectors.toList());
         }
 
-        Employee.EmployeeSearchResponse response = Employee.EmployeeSearchResponse.newBuilder()
+        EmployeeSearchResponse response = EmployeeSearchResponse.newBuilder()
                 .addAllEmpData(matchedEmployees)
                 .setRequestData(request)
                 .build();
